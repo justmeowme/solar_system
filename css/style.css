@@ -1,0 +1,38 @@
+*,*::before,*::after{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul,ol,li{
+    list-style: none;
+}
+
+h1,h2,h3,h4,h5,h6,a{
+    font-weight: 100%;
+    line-height: 1;
+    font-size: 16px;
+    font-family: Avenir;
+    color: #000;
+}
+
+.wraper{
+    min-height: 100%;
+    overflow: hidden;
+}
+
+.container{
+    max-width: 1046px;
+    margin: 0px auto;
+
+}
+
+.wraper{
+    background: url('./assets/background.png')
+}
+
