@@ -1,54 +1,59 @@
-let arrow1 = document.querySelector('.left_arrow');
-let arrow2 = document.querySelector('.right_arrow');
-let img1 = document.querySelector('.img1');
-let img2 = document.querySelector('.img2');
-let img3 = document.querySelector('.img3');
+let arrow_back = document.querySelector('.left_arrow');
+let arrow_next = document.querySelector('.right_arrow');
+let sphere_1 = document.querySelector('.img1');
+let sphere_2 = document.querySelector('.img2');
+let sphere_3 = document.querySelector('.img3');
 let text = document.querySelector('.main_text');
+let planet_info = document.querySelector(".planet_info")
 
 let a = 0;
 
-arrow1.onclick = function(){
-    if (a == 0){
-        img1.src = '../assets/mars.png'
-        img2.src = '../assets/moon.png'
-        img3.src = '../assets/earth.png'
-        text.textContent = "Moon"
-        a = 1;
-    } else if (a==1){
-        img2.src = '../assets/mars.png'
-        img3.src = '../assets/moon.png'
-        img1.src = '../assets/earth.png'
-        text.textContent = "Mars"
-        a = 2;
-    } else{
-        img3.src = '../assets/mars.png'
-        img1.src = '../assets/moon.png'
-        img2.src = '../assets/earth.png'
-        text.textContent = "Earth"
-        a = 0;
-    }
+let img_arr = [
+    {
+        title: "Moon",
+        img: '../assets/moon.png',
+    },
+    {
+        title: "Earth",
+        img: '../assets/earth.png',
+    },
+    {
+        title: "Mars",
+        img: '../assets/mars.png',
+    },
+]
+
+arrow_next.onclick = function () {
+    const img_ref = img_arr.splice(0, 1) // splice -> delete element and return
+    img_arr = [...img_arr, ...img_ref]
+    // img_arr.push(img_ref[0])
+    render(img_arr)
 }
 
-arrow2.onclick = function(){
-    if (a == 0){
-        img1.src = '../assets/mars.png'
-        img2.src = '../assets/moon.png'
-        img3.src = '../assets/earth.png'
-        text.textContent = "Moon"
-        a = 2;
-    } else if (a==1){
-        img2.src = '../assets/mars.png'
-        img3.src = '../assets/moon.png'
-        img1.src = '../assets/earth.png'
-        text.textContent = "Mars"
-        a = 0;
-    } else{
-        img3.src = '../assets/mars.png'
-        img1.src = '../assets/moon.png'
-        img2.src = '../assets/earth.png'
-        text.textContent = "Earth"
-        a = 1;
-    }
+arrow_back.onclick = function () {
+    const img_ref = img_arr.splice(img_arr.length - 1, 1)
+    img_arr = [...img_ref, ...img_arr]
+    // img_arr.unshift(img_ref[0])
+    render(img_arr)
 }
 
+function expandToTop(el){
+    planet_info.classList.add("visible")
+    el.classList.add("expanded_planet")
+}
 
+function render(arr) {
+    // sphere_2.removeEventListener("click", arr[0].onClick)
+    sphere_1.src = arr[0].img
+    sphere_2.src = arr[1].img
+    sphere_2.setAttribute("data-planet", arr[1].title)
+    sphere_3.src = arr[2].img
+    text.innerHTML = arr[1].title
+    // sphere_2.addEventListener("click", arr[1].onClick)
+}
+
+sphere_2.addEventListener("click", (ev)=>{
+    const sphere = ev.target
+    const planet = sphere.getAttribute("data-planet")
+    expandToTop(sphere)
+})
