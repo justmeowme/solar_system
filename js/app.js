@@ -6,8 +6,6 @@ let sphere_3 = document.querySelector('.img3');
 let text = document.querySelector('.main_text');
 let planet_info = document.querySelector(".planet_info")
 
-let a = 0;
-
 let img_arr = [
     {
         title: "Moon",

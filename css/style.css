@@ -137,10 +137,34 @@ body{
     left: 0;
     width: 100%;
     height: 100vh;
-    background: #000;
+    background: url('../assets/background.png');
     z-index: 990;
 }
 
+
 .planet_info.visible {
-    display: block;
+    display: flex;
+    align-content: right;
+    justify-content: right;
+}
+
+.planet_description{
+    font-size: 24px;
+}
+
+.second_page{
+    margin-right: 200px;
+    margin-top: 100px;
+}
+
+.planet_description, .planet_head, .planet_text{
+    margin: 30px;
+}
+
+.planet_head{
+    font-size: 18px;;
+}
+
+.planet_text{
+    font-size: 12px;
 }
