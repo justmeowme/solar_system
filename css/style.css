@@ -139,32 +139,43 @@ body{
     height: 100vh;
     background: url('../assets/background.png');
     z-index: 990;
+
 }
 
 
 .planet_info.visible {
     display: flex;
-    align-content: right;
-    justify-content: right;
+    justify-content: flex-end;
 }
 
 .planet_description{
-    font-size: 24px;
+    font-size: 40px;
 }
 
 .second_page{
-    margin-right: 200px;
-    margin-top: 100px;
+    width: 50%;
+    position: relative;
 }
 
 .planet_description, .planet_head, .planet_text{
-    margin: 30px;
 }
 
 .planet_head{
-    font-size: 18px;;
+    margin: 32px 0;
+    font-size: 24px;
 }
 
 .planet_text{
-    font-size: 12px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.4;
+    letter-spacing: 1px;
+}
+
+.second_page__text {
+    position: absolute;
+    top: 30vh;
+    left: 50%;
+    transform: translate(-50%, 0);
+    max-width: 500px;
 }

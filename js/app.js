@@ -38,6 +38,15 @@ arrow_back.onclick = function () {
 function expandToTop(el){
     planet_info.classList.add("visible")
     el.classList.add("expanded_planet")
+    el.addEventListener("click",function (){
+        decreaseModal(el, this)
+    })
+}
+
+function decreaseModal(el, fn){
+    planet_info.classList.remove("visible")
+    el.classList.remove("expanded_planet")
+    el.removeEventListener("click", fn )
 }
 
 function render(arr) {
