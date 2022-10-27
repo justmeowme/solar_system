@@ -35,18 +35,17 @@ arrow_back.onclick = function () {
     render(img_arr)
 }
 
+let opened = false;
+
 function expandToTop(el){
     planet_info.classList.add("visible")
     el.classList.add("expanded_planet")
-    el.addEventListener("click",function (){
-        decreaseModal(el, this)
-    })
 }
 
-function decreaseModal(el, fn){
+function decreaseModal(el){
     planet_info.classList.remove("visible")
     el.classList.remove("expanded_planet")
-    el.removeEventListener("click", fn )
+    
 }
 
 function render(arr) {
@@ -62,5 +61,12 @@ function render(arr) {
 sphere_2.addEventListener("click", (ev)=>{
     const sphere = ev.target
     const planet = sphere.getAttribute("data-planet")
-    expandToTop(sphere)
+    if (!opened){
+        expandToTop(sphere);
+        opened = true;
+    } else{
+        decreaseModal(sphere);
+        opened = false;
+    }
+    
 })
